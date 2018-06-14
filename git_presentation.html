@@ -99,7 +99,7 @@ Add your name as the author to the document (e.g., "author: Tiffany Timbers")
 Click on the big green button "Commit changes" to save your work
 
 --- 
-## Configuring Git locally
+# Configuring Git locally
 
 Before we can `clone` the repository from Github to our local machines, we need to set up the Git configurations on all the laptops. 
 
@@ -115,36 +115,37 @@ git config --global core.editor "atom --wait"
 For more details, see Software Carpentry's lesson on [setting up Git](http://swcarpentry.github.io/git-novice/02-setup/)
 
 ---
-## Cloning repositories from Github
+# Cloning repositories from Github
 
 If you want to be able to run the code on your own machine, and modify it there, we need to "clone" it. 
 
 To clone it:
-    1. go into the repository (your copy of it)
-    2. click on the green "Clone or download" button (make sure the pop-up says "Clone with HTTPS")
-    3. copy the URL to the clipboard
-    4. open a Unix Shell instance (e.g., terminal in RStudio) on your laptop
-    5. navigate to your `Documents` directory
-        ```
-        cd Documents
-        ```
-    6. type `git clone` and paste the URL
-        ```
-        git clone https://github.com/github_username/repository_name.git
-        ```
-    7. press enter to clone the repository to your local machine
+
+1. go into the repository (your copy of it)
+2. click on the green "Clone or download" button (make sure the pop-up says "Clone with HTTPS")
+3. copy the URL to the clipboard
+4. open a Unix Shell instance (e.g., terminal in RStudio) on your laptop
+5. navigate to your `Documents` directory
+  ```
+  cd Documents
+  ```
+6. type `git clone` and paste the URL
+  ```
+  git clone https://github.com/github_username/repository_name.git
+  ```
+7. press enter to clone the repository to your local machine
     
 For more details, see Github's docs on [cloning](https://help.github.com/articles/cloning-a-repository/).
 
 ---
-## Making changes locally
+# Making changes locally
 
 Open the README.md file in R Studio and make another change (e.g., add today's date to the file). 
 
 Save the changes to that file.
 
 ---
-## Add and commit your changes to Git
+# Add and commit your changes to Git
 
 Once you have made a change to a file in a Git repository that you have locally (*i.e.,* on your laptop), you need to add and commit the changes.
 
@@ -162,12 +163,12 @@ Committing the changes is essentially saving the differences between the new ver
         ```
 
 ---
-### How do I know if I made changes?
+# How do I know if I made changes?
 
 `git status` is a friendly command that lets you know if you have changes that you have yet to add or commit.
 
 ---
-## Push local changes to Github
+# Push local changes to Github
 
 Once you have made local changes, and added and committed them, you need to "push" the changes to Github:
 
@@ -181,7 +182,7 @@ For more details, see Github's doc on [pushing changes to Github](https://help.g
 # What if I make more changes directly on Github? 
 
 ---
-## Pull changes made on Github to your local machine
+# Pull changes made on Github to your local machine
 
 If you make changes remotely on Github, and then afterwards want to make additional changes locally on your computer, you must first `pull` the changes from Github to your local machine:
 
@@ -194,7 +195,7 @@ For more details, see Github's docs on [pulling changes from Github to your loca
 *If you forget to `pull` the changes on the remote before you make and commit your local changes, you will get **rejected** when you go to `push` the new changes to Github.*
 
 ---
-### What to do if my `push` gets rejected?
+# What to do if my `push` gets rejected?
 
 1. `pull` the remote changes to your local machine:
     ```
