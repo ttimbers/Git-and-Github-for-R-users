@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Git and Github for R users</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Tiffany Timbers" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Git and Github for R users
+### Tiffany Timbers
+### 2018/06/14
+
+---
+
+
+
+
+# Learning Goals
+
+## By the end of this session, you should be able to:
+
+- Access the web interface of Github
+- Use the bash shell to interact with Github (basic interaction)
+- Clone a repository from Github
+- Add &amp; commit changes to version controlled files on Github, and on your local machine
+- Push local changes to Github
+
+*Attribution - much of this presentation is derived from Jenny Bryan's "Happy with and GitHub for the useR" book*
+---
+class: center, middle
+
+# Why version control?
+
+![:scale 40%](phd101212s.png)
+
+*source: “Piled Higher and Deeper” by Jorge Cham*&lt;/br&gt; 
+*http://www.phdcomics.com*
+
+---
+# Additional reasons to learn Git &amp; Github
+
+- Github (website) can act as a back-up for files housed there
+- Github can be used to host websites/blogs
+- Github has a fantastic search functionality
+
+And git is the language we have to speak to communicate with Github. Sometimes is a quirky language.
+
+---
+# Useful Git and Github resources:
+Software Carpentries Git cheat sheet
+- http://swcarpentry.github.io/git-novice/reference/
+
+Jenny Bryan's "Happy Git and GitHub for the useR" book
+- http://happygitwithr.com/
+
+---
+# Get yourself a Github account!
+
+https://github.com/
+
+---
+# Create a repository on Github
+
+Go to https://github.com and make sure you are logged in.
+
+Click green “New repository” button. Or, if you are on your own profile page, click on “Repositories”, then click the green “New” button.
+
+Choose/set:
+- Repository name: myrepo (or whatever you wish, we will delete this)
+- Public
+- YES Initialize this repository with a README
+
+Click big green button “Create repository.”
+
+Copy the HTTPS clone URL to your clipboard via the green “Clone or Download” button.
+
+---
+# Adding &amp; commiting changes to version controlled files
+
+There are two ways to make changes to your files:
+
+1. Edit files directly on Github.
+2. Make changes on files you have cloned locally to your computer, and then "push" the changes back to Github.
+ 
+---
+# Edit files directly on Github
+
+Click on the `README.md` file link
+
+Click on the pen tool (right-hand side of document)
+
+Add your name as the author to the document (e.g., "author: Tiffany Timbers")
+
+Click on the big green button "Commit changes" to save your work
+
+--- 
+## Configuring Git locally
+
+Before we can `clone` the repository from Github to our local machines, we need to set up the Git configurations on all the laptops. 
+
+To do this, open a terminal or Git for Windows and type the following (using your user-specific details for the first two commands):
+
+```
+git config --global user.name "First_Name Last_Name"
+git config --global user.email "your@email.address"
+git config --global color.ui "auto"
+git config --global core.editor "atom --wait"
+```
+
+For more details, see Software Carpentry's lesson on [setting up Git](http://swcarpentry.github.io/git-novice/02-setup/)
+
+---
+## Cloning repositories from Github
+
+If you want to be able to run the code on your own machine, and modify it there, we need to "clone" it. 
+
+To clone it:
+    1. go into the repository (your copy of it)
+    2. click on the green "Clone or download" button (make sure the pop-up says "Clone with HTTPS")
+    3. copy the URL to the clipboard
+    4. open a Unix Shell instance (e.g., terminal in RStudio) on your laptop
+    5. navigate to your `Documents` directory
+        ```
+        cd Documents
+        ```
+    6. type `git clone` and paste the URL
+        ```
+        git clone https://github.com/github_username/repository_name.git
+        ```
+    7. press enter to clone the repository to your local machine
+    
+For more details, see Github's docs on [cloning](https://help.github.com/articles/cloning-a-repository/).
+
+---
+## Making changes locally
+
+Open the README.md file in R Studio and make another change (e.g., add today's date to the file). 
+
+Save the changes to that file.
+
+---
+## Add and commit your changes to Git
+
+Once you have made a change to a file in a Git repository that you have locally (*i.e.,* on your laptop), you need to add and commit the changes.
+
+Committing the changes is essentially saving the differences between the new version of the document and the previous version of the document in the hidden `.git` directory in the Git repository.
+
+- This is a two stage process with Git:
+    1. Add changes to staging area
+        ```
+        git add file_name(s)
+        ```
+        
+    2. Commit changes to hidden `.git` directory
+        ```
+        git commit -m "Some useful message about the changes you made"
+        ```
+
+---
+### How do I know if I made changes?
+
+`git status` is a friendly command that lets you know if you have changes that you have yet to add or commit.
+
+---
+## Push local changes to Github
+
+Once you have made local changes, and added and committed them, you need to "push" the changes to Github:
+
+```
+git push
+```
+
+For more details, see Github's doc on [pushing changes to Github](https://help.github.com/articles/pushing-to-a-remote/).
+
+---
+# What if I make more changes directly on Github? 
+
+---
+## Pull changes made on Github to your local machine
+
+If you make changes remotely on Github, and then afterwards want to make additional changes locally on your computer, you must first `pull` the changes from Github to your local machine:
+
+```
+git pull origin master
+```
+
+For more details, see Github's docs on [pulling changes from Github to your local machine](https://help.github.com/articles/fetching-a-remote/#pull).
+
+*If you forget to `pull` the changes on the remote before you make and commit your local changes, you will get **rejected** when you go to `push` the new changes to Github.*
+
+---
+### What to do if my `push` gets rejected?
+
+1. `pull` the remote changes to your local machine:
+    ```
+    git pull origin master
+    ```
+2. Deal with any merge conflicts you may have and `add` and `commit` these changes:
+    - see [Resolving a merge conflict from the command line](https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line/)
+    
+3. `push` the changes to Github
+    ```
+    git push origin master
+    ```
+
+---
+# Creating new files in your repository
+
+Sometimes you will need to creat a brand new file to add to your Github repository. Again, you have two options to do this:
+
+1. Create new files locally to your computer inside the directory housing the repository, `add` &amp; `commit` this change, and then `push` the changes back to Github.
+
+2. Create the new file directly on Github using the "Create new file" button.
+    - see Github's docs on [creating new files](https://help.github.com/articles/creating-new-files/)
+
+---
+
+# Accessing and reading issues on Github
+
+Issues are messages associated with a Github repository. They live in the "Issues" tab inside a Github repository
+
+Issues:
+- are like emails (they will even be delivered to your inbox!) that stay linked to the repository.
+- are used to track ideas, enhancements, tasks, or bugs for projects on GitHub (we will also be using them to send you your grades on assignments and quizzes).
+- are searchable.
+- can be edited, but not be deleted (unless you delete the entire repository).
+- exist in a state of "open" (need to be dealt with) or "closed" (nothing needs to be done).
+
+For more details, see Github's docs on [issues on Github](https://help.github.com/articles/managing-projects-with-issues/)
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
